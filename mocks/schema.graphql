@@ -1,0 +1,36 @@
+type Query {
+  users: [User]
+  user(id: ID!): User
+}
+
+type Mutation {
+  addFavoriteFood(
+    userId: ID!
+    name: String!
+    eatingFrequency: EatingFrequency!
+  ): FavoriteFoodItem
+}
+
+type User {
+  id: ID!
+  name: String!
+  favoriteFoods: [FavoriteFoodItem]
+}
+
+type FavoriteFoodItem {
+  id: ID!
+  foodItem: FoodItem!
+  user: User!
+  eatingFrequency: EatingFrequency!
+}
+
+type FoodItem {
+  id: ID!
+  name: String!
+}
+
+enum EatingFrequency {
+  DAILY
+  WEEKLY
+  MONTHLY
+}
